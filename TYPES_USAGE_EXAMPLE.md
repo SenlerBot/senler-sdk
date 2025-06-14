@@ -199,7 +199,7 @@ const statsParams: GetRecipientStatisticsRequest = {
 const stats: RecipientStatisticsResponse = await client.deliveries.getRecipientStatistics(statsParams);
 ```
 
-## Типы for работы с переменными
+## Типы для работы с переменными
 
 ```typescript
 import { 
