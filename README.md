@@ -192,7 +192,7 @@ await client.subscribers.get({count: 30}, cacheConfig)
 
 Библиотека предоставляет следующие методы для работы с API:
 
-#### 👥 **Работа с подписчиками** (`client.subscribers`)
+#### **Работа с подписчиками** (`client.subscribers`)
 - **`get()`** - Получение списка подписчиков  
   *Типы*: `GetSubscribersRequest`, `GetSubscribersResponse`
 - **`count()`** - Получение количества подписчиков  
@@ -206,7 +206,7 @@ await client.subscribers.get({count: 30}, cacheConfig)
 - **`getSubscriptionsCountStatistics()`** - Количественная статистика подписок  
   *Типы*: `GetSubscriptionsCountStatisticsRequest`, `GetSubscriptionsCountStatisticsResponse`
 
-#### 🤖 **Работа с ботами** (`client.bots`)
+#### **Работа с ботами** (`client.bots`)
 - **`get()`** - Получение списка ботов  
   *Типы*: `GetBotsListRequest`, `GetBotsListResponse`, `BotInfo`
 - **`getSteps()`** - Получение шагов бота  
@@ -216,7 +216,7 @@ await client.subscribers.get({count: 30}, cacheConfig)
 - **`delSubscriber()`** - Удаление подписчика из бота  
   *Типы*: `DelSubscriberRequest`, `DelSubscriberResponse`
 
-#### 🏷️ **Работа с UTM метками** (`client.utms`)
+#### **Работа с UTM метками** (`client.utms`)
 - **`add()`** - Создание UTM метки  
   *Типы*: `AddUtmRequest`, `AddUtmResponse`
 - **`edit()`** - Редактирование UTM метки  
@@ -232,7 +232,7 @@ await client.subscribers.get({count: 30}, cacheConfig)
 - **`getSubscriptionsStatistics()`** - Подписчики с UTM метками  
   *Типы*: `GetUtmSubscriptionsStatisticsRequest`, `SubscriptionsStatisticsResponse`
 
-#### 📬 **Работа с рассылками** (`client.deliveries`)
+#### **Работа с рассылками** (`client.deliveries`)
 - **`get()`** - Получение списка рассылок  
   *Типы*: `GetDeliveriesRequest`, `GetDeliveriesResponse`, `Delivery`, `DeliveryStatus`, `DeliveryType`
 - **`getSubscriptionsStatistics()`** - Статистика доставки с информацией о получателях  
@@ -240,7 +240,7 @@ await client.subscribers.get({count: 30}, cacheConfig)
 - **`getSubscriptionsCountStatistics()`** - Количественная статистика рассылок  
   *Типы*: `GetDeliveryCountStatisticsRequest`, `DeliveryCountStatisticsResponse`
 
-#### 🔧 **Работа с переменными пользователей** (`client.vars`)
+#### **Работа с переменными пользователей** (`client.vars`)
 - **`get()`** - Получение переменной пользователя  
   *Типы*: `GetVarRequest`, `GetVarResponse`, `Var`
 - **`set()`** - Установка переменной пользователя  
