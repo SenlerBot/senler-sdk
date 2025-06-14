@@ -1,0 +1,13 @@
+src/
+tests/
+
+.github
+
+eslint.config.mjs
+jest.config.js
+*tsconfig.json
+
+.env*
+.prettierrc
+
+.vscode
