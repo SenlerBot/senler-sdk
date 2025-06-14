@@ -5,7 +5,8 @@ export interface ApiConfig {
   apiVersion?: string;
   baseUrl?: string;
   accessToken: string;
-  vkGroupId: number;
+  vkGroupId?: number;
+  groupId?: number;
 }
 
 export interface LoggingConfig extends LoggerOptions {

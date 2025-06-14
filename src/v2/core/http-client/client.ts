@@ -101,6 +101,7 @@ export class HttpClient {
       params: {
         access_token: this.apiConfig.accessToken,
         vk_group_id: this.apiConfig.vkGroupId,
+        group_id: this.apiConfig.groupId,
         v: this.apiConfig.apiVersion,
       },
     };
