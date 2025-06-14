@@ -188,21 +188,80 @@ await client.subscribers.get({count: 30}, cacheConfig)
 
 The library is written in TypeScript and exports all necessary types for comfortable development.
 
-### Available Types
+### Available API Methods
 
-The library exports the following type categories:
+The library provides the following methods for working with the API:
 
+#### 👥 **Working with subscribers** (`client.subscribers`)
+- **`get()`** - Get list of subscribers  
+  *Types*: `GetSubscribersRequest`, `GetSubscribersResponse`
+- **`count()`** - Get subscribers count  
+  *Returns*: `number`
+- **`addInGroup()`** - Add subscriber to group  
+  *Types*: `AddSubscribersInGroupRequest`, `AddSubscribersInGroupResponse`
+- **`delFromGroup()`** - Remove subscriber from group  
+  *Types*: `DelSubscriberFromSubscriptionGroupRequest`, `DelSubscriberFromSubscriptionGroupResponse`
+- **`getSubscriptionsStatistics()`** - Subscription statistics  
+  *Types*: `GetSubscriptionsStatisticsRequest`, `GetSubscriptionsStatisticsResponse`
+- **`getSubscriptionsCountStatistics()`** - Subscription count statistics  
+  *Types*: `GetSubscriptionsCountStatisticsRequest`, `GetSubscriptionsCountStatisticsResponse`
+
+#### 🤖 **Working with bots** (`client.bots`)
+- **`get()`** - Get list of bots  
+  *Types*: `GetBotsListRequest`, `GetBotsListResponse`, `BotInfo`
+- **`getSteps()`** - Get bot steps  
+  *Types*: `GetStepsRequest`, `GetStepsResponse`, `Step`, `StepType`
+- **`addSubscriber()`** - Add subscriber to bot  
+  *Types*: `AddSubscriberRequest`, `AddSubscriberResponse`
+- **`delSubscriber()`** - Remove subscriber from bot  
+  *Types*: `DelSubscriberRequest`, `DelSubscriberResponse`
+
+#### 🏷️ **Working with UTM tags** (`client.utms`)
+- **`add()`** - Create UTM tag  
+  *Types*: `AddUtmRequest`, `AddUtmResponse`
+- **`edit()`** - Edit UTM tag  
+  *Types*: `EditUtmRequest`, `EditUtmResponse`
+- **`del()`** - Delete UTM tag  
+  *Types*: `DeleteUtmRequest`, `DeleteUtmResponse`
+- **`get()`** - Get list of UTM tags  
+  *Types*: `GetUtmRequest`, `GetUtmResponse`, `UtmTag`
+- **`getLink()`** - Get link for UTM tag  
+  *Types*: `GetLinkUtmRequest`, `GetLinkUtmResponse`
+- **`getSubscriptionsCountStatistics()`** - UTM tags statistics  
+  *Types*: `GetUtmSubscriptionsCountStatisticsRequest`, `GetUtmSubscriptionsCountStatisticsResponse`
+- **`getSubscriptionsStatistics()`** - Subscribers with UTM tags  
+  *Types*: `GetUtmSubscriptionsStatisticsRequest`, `SubscriptionsStatisticsResponse`
+
+#### 📬 **Working with mailings** (`client.deliveries`)
+- **`get()`** - Get list of mailings  
+  *Types*: `GetDeliveriesRequest`, `GetDeliveriesResponse`, `Delivery`, `DeliveryStatus`, `DeliveryType`
+- **`getSubscriptionsStatistics()`** - Delivery statistics with recipient info  
+  *Types*: `GetRecipientStatisticsRequest`, `RecipientStatisticsResponse`
+- **`getSubscriptionsCountStatistics()`** - Delivery count statistics  
+  *Types*: `GetDeliveryCountStatisticsRequest`, `DeliveryCountStatisticsResponse`
+
+#### 🔧 **Working with user variables** (`client.vars`)
+- **`get()`** - Get user variable  
+  *Types*: `GetVarRequest`, `GetVarResponse`, `Var`
+- **`set()`** - Set user variable  
+  *Types*: `SetVarRequest`, `SetVarResponse`
+- **`del()`** - Delete user variable  
+  *Types*: `DeleteVarRequest`, `DeleteVarResponse`
+
+#### 🌐 **Working with global variables** (`client.globalVars`)
+- **`get()`** - Get global variable  
+  *Types*: `GetGlobalVarRequest`, `GetGlobalVarResponse`, `GlobalVar`
+- **`set()`** - Set global variable  
+  *Types*: `SetGlobalVarRequest`, `SetGlobalVarResponse`
+- **`del()`** - Delete global variable  
+  *Types*: `DeleteGlobalVarRequest`, `DeleteGlobalVarResponse`
+
+#### ⚙️ **Additional types**
 - **Main classes**: `SenlerApiClientV2`, `ApiClientConfig`
 - **Configuration types**: `ApiConfig`, `LoggingConfig`, `RetryConfig`, `CacheConfig`, `RequestCacheConfig`
 - **Error types**: `ApiError`
-- **API resource types**:
-  - Subscribers: `GetSubscribersRequest`, `GetSubscribersResponse`, `AddSubscribersInGroupRequest`, etc.
-  - Bots: `GetBotsListRequest`, `GetBotsListResponse`, `BotInfo`, `Step`, `StepType`, etc.
-  - UTM tags: `AddUtmRequest`, `AddUtmResponse`, `UtmTag`, etc.
-  - Mailings: `GetDeliveriesRequest`, `GetDeliveriesResponse`, `Delivery`, `DeliveryStatus`, etc.
-  - Variables: `SetVarRequest`, `GetVarRequest`, `Var`, `GlobalVar`, etc.
 
-### Example Usage with Types
+### Examples of using methods with types
 
 ```typescript
 import { 
@@ -210,6 +269,10 @@ import {
   ApiClientConfig,
   GetSubscribersRequest,
   GetSubscribersResponse,
+  AddUtmRequest,
+  AddUtmResponse,
+  GetBotsListResponse,
+  SetVarRequest,
   ApiError 
 } from 'senler-sdk';
 
@@ -220,13 +283,38 @@ const config: ApiClientConfig = {
 
 const client = new SenlerApiClientV2({ apiConfig: config });
 
-const params: GetSubscribersRequest = {
+// Working with subscribers
+const subscribersParams: GetSubscribersRequest = {
   count: 50,
   offset: 0
 };
 
+const subscribers: GetSubscribersResponse = await client.subscribers.get(subscribersParams);
+const subscribersCount = await client.subscribers.count();
+
+// Working with UTM tags
+const utmParams: AddUtmRequest = {
+  name: 'summer_campaign',
+  comment: 'Summer advertising campaign'
+};
+
+const newUtm: AddUtmResponse = await client.utms.add(utmParams);
+
+// Working with bots
+const bots: GetBotsListResponse = await client.bots.get();
+
+// Working with variables
+const varParams: SetVarRequest = {
+  subscriber_id: 12345,
+  var_name: 'user_name',
+  var_value: 'John Doe'
+};
+
+await client.vars.set(varParams);
+
+// Error handling
 try {
-  const result: GetSubscribersResponse = await client.subscribers.get(params);
+  const result = await client.subscribers.get({ count: 10 });
   console.log('Subscribers:', result.items);
 } catch (error) {
   if (error instanceof ApiError) {

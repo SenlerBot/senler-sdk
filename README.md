@@ -6,7 +6,7 @@
 *[English version](./README.en.md)*
 
 ## Описание
-`Senler SDK` — это официальная TypeScript библиотека для удобного взаимодействия с [API Senler](https://help.senler.ru/senler/dev/api). Она предоставляет модульную структуру для работы с различными ресурсами Senler: подписчиками, рассылками, ботами, UTM метками и другими.
+`Senler SDK` — это официальная TypeScript библиотека для удобного взаимодействия с [API Senler](https://help.senler.ru/senler/help/razrabotchikam/api). Она предоставляет модульную структуру для работы с различными ресурсами Senler: подписчиками, рассылками, ботами, UTM метками и другими.
 
 ## Установка
 
@@ -114,7 +114,7 @@ app.get('/get', async (_req, res) => {
 });
 ```
 
-Ошибки, реализованные через `success`, `error_code` и `error_message` ([документация](https://help.senler.ru/senler/dev/api/vozvrashaemye-oshibki)) преобразуются и выбрасываются как ApiError с соответствующим сообщением.
+Ошибки, реализованные через `success`, `error_code` и `error_message` ([документация](https://help.senler.ru/senler/help/razrabotchikam/api/vozvrashaemye-oshibki)) преобразуются и выбрасываются как ApiError с соответствующим сообщением.
 
 ## Логирование
 
@@ -188,21 +188,80 @@ await client.subscribers.get({count: 30}, cacheConfig)
 
 Библиотека написана на TypeScript и экспортирует все необходимые типы для комфортной разработки.
 
-### Доступные типы
+### Доступные методы API
 
-Библиотека экспортирует следующие категории типов:
+Библиотека предоставляет следующие методы для работы с API:
 
+#### 👥 **Работа с подписчиками** (`client.subscribers`)
+- **`get()`** - Получение списка подписчиков  
+  *Типы*: `GetSubscribersRequest`, `GetSubscribersResponse`
+- **`count()`** - Получение количества подписчиков  
+  *Возвращает*: `number`
+- **`addInGroup()`** - Добавление подписчика в группу  
+  *Типы*: `AddSubscribersInGroupRequest`, `AddSubscribersInGroupResponse`
+- **`delFromGroup()`** - Удаление подписчика из группы  
+  *Типы*: `DelSubscriberFromSubscriptionGroupRequest`, `DelSubscriberFromSubscriptionGroupResponse`
+- **`getSubscriptionsStatistics()`** - Статистика подписок  
+  *Типы*: `GetSubscriptionsStatisticsRequest`, `GetSubscriptionsStatisticsResponse`
+- **`getSubscriptionsCountStatistics()`** - Количественная статистика подписок  
+  *Типы*: `GetSubscriptionsCountStatisticsRequest`, `GetSubscriptionsCountStatisticsResponse`
+
+#### 🤖 **Работа с ботами** (`client.bots`)
+- **`get()`** - Получение списка ботов  
+  *Типы*: `GetBotsListRequest`, `GetBotsListResponse`, `BotInfo`
+- **`getSteps()`** - Получение шагов бота  
+  *Типы*: `GetStepsRequest`, `GetStepsResponse`, `Step`, `StepType`
+- **`addSubscriber()`** - Добавление подписчика в бот  
+  *Типы*: `AddSubscriberRequest`, `AddSubscriberResponse`
+- **`delSubscriber()`** - Удаление подписчика из бота  
+  *Типы*: `DelSubscriberRequest`, `DelSubscriberResponse`
+
+#### 🏷️ **Работа с UTM метками** (`client.utms`)
+- **`add()`** - Создание UTM метки  
+  *Типы*: `AddUtmRequest`, `AddUtmResponse`
+- **`edit()`** - Редактирование UTM метки  
+  *Типы*: `EditUtmRequest`, `EditUtmResponse`
+- **`del()`** - Удаление UTM метки  
+  *Типы*: `DeleteUtmRequest`, `DeleteUtmResponse`
+- **`get()`** - Получение списка UTM меток  
+  *Типы*: `GetUtmRequest`, `GetUtmResponse`, `UtmTag`
+- **`getLink()`** - Получение ссылки для UTM метки  
+  *Типы*: `GetLinkUtmRequest`, `GetLinkUtmResponse`
+- **`getSubscriptionsCountStatistics()`** - Статистика UTM меток  
+  *Типы*: `GetUtmSubscriptionsCountStatisticsRequest`, `GetUtmSubscriptionsCountStatisticsResponse`
+- **`getSubscriptionsStatistics()`** - Подписчики с UTM метками  
+  *Типы*: `GetUtmSubscriptionsStatisticsRequest`, `SubscriptionsStatisticsResponse`
+
+#### 📬 **Работа с рассылками** (`client.deliveries`)
+- **`get()`** - Получение списка рассылок  
+  *Типы*: `GetDeliveriesRequest`, `GetDeliveriesResponse`, `Delivery`, `DeliveryStatus`, `DeliveryType`
+- **`getSubscriptionsStatistics()`** - Статистика доставки с информацией о получателях  
+  *Типы*: `GetRecipientStatisticsRequest`, `RecipientStatisticsResponse`
+- **`getSubscriptionsCountStatistics()`** - Количественная статистика рассылок  
+  *Типы*: `GetDeliveryCountStatisticsRequest`, `DeliveryCountStatisticsResponse`
+
+#### 🔧 **Работа с переменными пользователей** (`client.vars`)
+- **`get()`** - Получение переменной пользователя  
+  *Типы*: `GetVarRequest`, `GetVarResponse`, `Var`
+- **`set()`** - Установка переменной пользователя  
+  *Типы*: `SetVarRequest`, `SetVarResponse`
+- **`del()`** - Удаление переменной пользователя  
+  *Типы*: `DeleteVarRequest`, `DeleteVarResponse`
+
+#### 🌐 **Работа с глобальными переменными** (`client.globalVars`)
+- **`get()`** - Получение глобальной переменной  
+  *Типы*: `GetGlobalVarRequest`, `GetGlobalVarResponse`, `GlobalVar`
+- **`set()`** - Установка глобальной переменной  
+  *Типы*: `SetGlobalVarRequest`, `SetGlobalVarResponse`
+- **`del()`** - Удаление глобальной переменной  
+  *Типы*: `DeleteGlobalVarRequest`, `DeleteGlobalVarResponse`
+
+#### ⚙️ **Дополнительные типы**
 - **Основные классы**: `SenlerApiClientV2`, `ApiClientConfig`
 - **Конфигурационные типы**: `ApiConfig`, `LoggingConfig`, `RetryConfig`, `CacheConfig`, `RequestCacheConfig`
 - **Типы ошибок**: `ApiError`
-- **Типы для API ресурсов**:
-  - Подписчики: `GetSubscribersRequest`, `GetSubscribersResponse`, `AddSubscribersInGroupRequest`, и др.
-  - Боты: `GetBotsListRequest`, `GetBotsListResponse`, `BotInfo`, `Step`, `StepType`, и др.
-  - UTM метки: `AddUtmRequest`, `AddUtmResponse`, `UtmTag`, и др.
-  - Рассылки: `GetDeliveriesRequest`, `GetDeliveriesResponse`, `Delivery`, `DeliveryStatus`, и др.
-  - Переменные: `SetVarRequest`, `GetVarRequest`, `Var`, `GlobalVar`, и др.
 
-### Пример использования с типами
+### Примеры использования методов с типами
 
 ```typescript
 import { 
@@ -210,6 +269,10 @@ import {
   ApiClientConfig,
   GetSubscribersRequest,
   GetSubscribersResponse,
+  AddUtmRequest,
+  AddUtmResponse,
+  GetBotsListResponse,
+  SetVarRequest,
   ApiError 
 } from 'senler-sdk';
 
@@ -220,13 +283,38 @@ const config: ApiClientConfig = {
 
 const client = new SenlerApiClientV2({ apiConfig: config });
 
-const params: GetSubscribersRequest = {
+// Работа с подписчиками
+const subscribersParams: GetSubscribersRequest = {
   count: 50,
   offset: 0
 };
 
+const subscribers: GetSubscribersResponse = await client.subscribers.get(subscribersParams);
+const subscribersCount = await client.subscribers.count();
+
+// Работа с UTM метками
+const utmParams: AddUtmRequest = {
+  name: 'summer_campaign',
+  comment: 'Летняя рекламная кампания'
+};
+
+const newUtm: AddUtmResponse = await client.utms.add(utmParams);
+
+// Работа с ботами
+const bots: GetBotsListResponse = await client.bots.get();
+
+// Работа с переменными
+const varParams: SetVarRequest = {
+  subscriber_id: 12345,
+  var_name: 'user_name',
+  var_value: 'Иван Иванов'
+};
+
+await client.vars.set(varParams);
+
+// Обработка ошибок
 try {
-  const result: GetSubscribersResponse = await client.subscribers.get(params);
+  const result = await client.subscribers.get({ count: 10 });
   console.log('Подписчики:', result.items);
 } catch (error) {
   if (error instanceof ApiError) {
@@ -248,6 +336,6 @@ try {
 
 ## Поддержка
 
-- [Документация API](https://help.senler.ru/senler/dev/api)
+- [Документация API](https://help.senler.ru/senler/help/razrabotchikam)
 - [GitHub Issues](https://github.com/SenlerBot/senler-sdk/issues)
 - Email: support@senler.ru
