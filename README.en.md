@@ -6,7 +6,7 @@
 *[Русская версия](./README.md)*
 
 ## Description
-`Senler SDK` is an official TypeScript library for easy interaction with the [Senler API](https://help.senler.ru/senler/dev/api). It provides a modular structure for working with various Senler resources: subscribers, mailings, bots, UTM tags, and others.
+`Senler SDK` is an official TypeScript library for easy interaction with the [Senler API](https://help.senler.ru/senler/help/razrabotchikam/api). It provides a modular structure for working with various Senler resources: subscribers, mailings, bots, UTM tags, and others.
 
 ## Installation
 
@@ -114,7 +114,7 @@ app.get('/get', async (_req, res) => {
 });
 ```
 
-Errors implemented via `success`, `error_code` and `error_message` ([docs](https://help.senler.ru/senler/dev/api/vozvrashaemye-oshibki)) are converted and thrown as ApiError with the corresponding message.
+Errors implemented via `success`, `error_code` and `error_message` ([documentation](https://help.senler.ru/senler/help/razrabotchikam/api/vozvrashaemye-oshibki)) are converted and thrown as ApiError with the corresponding message.
 
 ## Logging
 
@@ -192,7 +192,7 @@ The library is written in TypeScript and exports all necessary types for comfort
 
 The library provides the following methods for working with the API:
 
-#### 👥 **Working with subscribers** (`client.subscribers`)
+#### **Working with subscribers** (`client.subscribers`)
 - **`get()`** - Get list of subscribers  
   *Types*: `GetSubscribersRequest`, `GetSubscribersResponse`
 - **`count()`** - Get subscribers count  
@@ -206,7 +206,7 @@ The library provides the following methods for working with the API:
 - **`getSubscriptionsCountStatistics()`** - Subscription count statistics  
   *Types*: `GetSubscriptionsCountStatisticsRequest`, `GetSubscriptionsCountStatisticsResponse`
 
-#### 🤖 **Working with bots** (`client.bots`)
+#### **Working with bots** (`client.bots`)
 - **`get()`** - Get list of bots  
   *Types*: `GetBotsListRequest`, `GetBotsListResponse`, `BotInfo`
 - **`getSteps()`** - Get bot steps  
@@ -216,7 +216,7 @@ The library provides the following methods for working with the API:
 - **`delSubscriber()`** - Remove subscriber from bot  
   *Types*: `DelSubscriberRequest`, `DelSubscriberResponse`
 
-#### 🏷️ **Working with UTM tags** (`client.utms`)
+#### **Working with UTM tags** (`client.utms`)
 - **`add()`** - Create UTM tag  
   *Types*: `AddUtmRequest`, `AddUtmResponse`
 - **`edit()`** - Edit UTM tag  
@@ -232,7 +232,7 @@ The library provides the following methods for working with the API:
 - **`getSubscriptionsStatistics()`** - Subscribers with UTM tags  
   *Types*: `GetUtmSubscriptionsStatisticsRequest`, `SubscriptionsStatisticsResponse`
 
-#### 📬 **Working with mailings** (`client.deliveries`)
+#### **Working with mailings** (`client.deliveries`)
 - **`get()`** - Get list of mailings  
   *Types*: `GetDeliveriesRequest`, `GetDeliveriesResponse`, `Delivery`, `DeliveryStatus`, `DeliveryType`
 - **`getSubscriptionsStatistics()`** - Delivery statistics with recipient info  
@@ -240,7 +240,7 @@ The library provides the following methods for working with the API:
 - **`getSubscriptionsCountStatistics()`** - Delivery count statistics  
   *Types*: `GetDeliveryCountStatisticsRequest`, `DeliveryCountStatisticsResponse`
 
-#### 🔧 **Working with user variables** (`client.vars`)
+#### **Working with user variables** (`client.vars`)
 - **`get()`** - Get user variable  
   *Types*: `GetVarRequest`, `GetVarResponse`, `Var`
 - **`set()`** - Set user variable  
@@ -248,7 +248,7 @@ The library provides the following methods for working with the API:
 - **`del()`** - Delete user variable  
   *Types*: `DeleteVarRequest`, `DeleteVarResponse`
 
-#### 🌐 **Working with global variables** (`client.globalVars`)
+#### **Working with global variables** (`client.globalVars`)
 - **`get()`** - Get global variable  
   *Types*: `GetGlobalVarRequest`, `GetGlobalVarResponse`, `GlobalVar`
 - **`set()`** - Set global variable  
@@ -256,7 +256,7 @@ The library provides the following methods for working with the API:
 - **`del()`** - Delete global variable  
   *Types*: `DeleteGlobalVarRequest`, `DeleteGlobalVarResponse`
 
-#### ⚙️ **Additional types**
+#### **Additional types**
 - **Main classes**: `SenlerApiClientV2`, `ApiClientConfig`
 - **Configuration types**: `ApiConfig`, `LoggingConfig`, `RetryConfig`, `CacheConfig`, `RequestCacheConfig`
 - **Error types**: `ApiError`
@@ -323,8 +323,6 @@ try {
 }
 ```
 
-For a complete list of types and usage examples, see [TYPES_USAGE_EXAMPLE.md](./TYPES_USAGE_EXAMPLE.md).
-
 ## Requirements
 
 - Node.js >= 16.0.0
@@ -336,6 +334,6 @@ This project is licensed under the MIT license. See [LICENSE](./LICENSE) for det
 
 ## Support
 
-- [API Documentation](https://help.senler.ru/senler/dev/api)
+- [API Documentation](https://help.senler.ru/senler/help/razrabotchikam)
 - [GitHub Issues](https://github.com/SenlerBot/senler-sdk/issues)
 - Email: support@senler.ru 
