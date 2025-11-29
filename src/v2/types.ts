@@ -58,4 +58,7 @@ export { GetGlobalVarRequest, GetGlobalVarRequestSchema, GetGlobalVarResponse } 
 export { GlobalVar } from './resources/globalVars/dto/get.globalVar.dto';
 export { SetGlobalVarRequest, SetGlobalVarRequestSchema, SetGlobalVarResponse } from './resources/globalVars/dto/set.dto';
 
+// Groups
+export { GetGroupRequest, GetGroupRequestSchema, GetGroupResponse, Group } from './resources/groups/dto/get.dto';
+
 export { SubscriptionSourceType } from './resources/share/types';

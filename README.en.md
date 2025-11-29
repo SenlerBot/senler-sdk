@@ -256,6 +256,10 @@ The library provides the following methods for working with the API:
 - **`del()`** - Delete global variable  
   *Types*: `DeleteGlobalVarRequest`, `DeleteGlobalVarResponse`
 
+#### 👥 **Working with groups** (`client.groups`)
+- **`get()`** - Get group information  
+  *Types*: `GetGroupRequest`, `GetGroupResponse`, `Group`
+
 #### **Additional types**
 - **Main classes**: `SenlerApiClientV2`, `ApiClientConfig`
 - **Configuration types**: `ApiConfig`, `LoggingConfig`, `RetryConfig`, `CacheConfig`, `RequestCacheConfig`
@@ -311,6 +315,10 @@ const varParams: SetVarRequest = {
 };
 
 await client.vars.set(varParams);
+
+// Working with groups
+const groupInfo = await client.groups.get({ group_id: '123' });
+console.log('Group:', groupInfo.item.name, groupInfo.item.type_name);
 
 // Error handling
 try {

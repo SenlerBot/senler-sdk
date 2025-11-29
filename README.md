@@ -256,6 +256,10 @@ await client.subscribers.get({count: 30}, cacheConfig)
 - **`del()`** - Удаление глобальной переменной  
   *Типы*: `DeleteGlobalVarRequest`, `DeleteGlobalVarResponse`
 
+#### 👥 **Работа с группами** (`client.groups`)
+- **`get()`** - Получение информации о группе  
+  *Типы*: `GetGroupRequest`, `GetGroupResponse`, `Group`
+
 #### ⚙️ **Дополнительные типы**
 - **Основные классы**: `SenlerApiClientV2`, `ApiClientConfig`
 - **Конфигурационные типы**: `ApiConfig`, `LoggingConfig`, `RetryConfig`, `CacheConfig`, `RequestCacheConfig`
@@ -311,6 +315,10 @@ const varParams: SetVarRequest = {
 };
 
 await client.vars.set(varParams);
+
+// Работа с группами
+const groupInfo = await client.groups.get({ group_id: '123' });
+console.log('Группа:', groupInfo.item.name, groupInfo.item.type_name);
 
 // Обработка ошибок
 try {
